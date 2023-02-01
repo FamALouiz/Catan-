@@ -42,13 +42,25 @@ def player_move(current_player_num):
 
 def game_loop():
     current_player_num = 0
+    current_player = game.players[current_player_num]
     while True:
+        # Printing current board
+        print(game.board)
+        print("Current Victory point standings:")
+        for i in range(len(game.players)):
+            print(
+                "Player %d: %d VP" % (i + 1, game.get_victory_points(game.players[i]))
+            )
         print("Player %d, it is your turn now" % (current_player_num + 1))
+        if game.get_victory_points(current_player) >= 10:
+            print("Congratuations! Player %d wins!" % (current_player_num + 1))
+            print("Final board:")
+            print(game.board)
+            exit(0)
         # Roll the dice
         dice = random.randint(1, 6) + random.randint(1, 6)
         print("Player %d rolled a %d" % (current_player_num + 1, dice))
         if dice == 7:
-            current_player = game.players[current_player_num]
             move_robber(current_player)
             current_player_num = player_move(current_player_num)
         else:
