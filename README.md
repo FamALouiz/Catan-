@@ -1,1 +1,1 @@
-# Catan-
+# Catan
