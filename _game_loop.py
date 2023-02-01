@@ -2,7 +2,7 @@ import random
 from _global_game import game
 from _buildings import build_something
 from _trading import trade
-from _development_cards import choose_development_card
+from _development_cards import choose_development_card, play_development
 
 
 def player_move(current_player_num):
@@ -32,6 +32,7 @@ def player_move(current_player_num):
             trade(current_player)
         elif choice == 3:
             development_chosen = choose_development_card(current_player)
+            play_development(development_chosen)
         else:
             print("Invalid move")
         if choice in [1, 2, 3]:
